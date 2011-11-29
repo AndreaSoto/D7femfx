@@ -1,0 +1,172 @@
+/*
+  This is the default layout template for nice menus, and will provide
+  a starting point for the look of your menus. To customize, it's
+  recommended to create a custom CSS file using this file as a template,
+  then configure the module to use your custom CSS file
+  (this is done in the global settings tab of the theme administration.)
+
+  See README.txt and the handbook page (http://drupal.org/node/185543)
+  for more information on using the CSS.
+*/
+
+/******************************
+ Global CSS for ALL menu types
+******************************/
+/*** ESSENTIAL STYLES ***/
+.nice-menu, .nice-menu * {
+	font-family: 'AlternateGothic2BTRegular';
+	text-transform:uppercase;
+	font-size:17px;
+	font-weight:normal;
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+	/*height:81px;*/
+}
+.nice-menu {
+	line-height:	3.5;
+}
+.nice-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			10em; /* left offset of submenus need to match (see below) */
+}
+.nice-menu ul li {
+	width:			100%;
+}
+.nice-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.nice-menu li {
+	float:			left;
+	position:		relative;
+	min-width:80px;
+	text-align:center;
+}
+.nice-menu li li{
+	text-align: left;
+	border-bottom:1px solid #333;
+}
+.nice-menu a {
+	display:		block;
+	position:		relative;
+}
+.nice-menu li:hover ul,
+.nice-menu li.sfHover ul {
+	left:			0;
+	top:			3.4em; /* match top ul list item height */
+	z-index:		99;
+}
+ul.nice-menu li:hover li ul,
+ul.nice-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.nice-menu li li:hover ul,
+ul.nice-menu li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.nice-menu li li:hover li ul,
+ul.nice-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.nice-menu li li li:hover ul,
+ul.nice-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+.nice-menu {
+	float:			left;
+	/*margin-bottom:	1em;*/
+}
+.nice-menu a { /* çizgi buraya*/
+	background:url(../../image/theme/dot-menu.png) no-repeat left center;
+	padding: 		0em 1em;
+	text-decoration:none;
+}
+.nice-menu a, .nice-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	color:			#a35d91;
+}
+.nice-menu a:hover { /* visited pseudo selector so IE6 applies text colour*/
+	color:			#f9f9f9;
+}
+.nice-menu li {
+	background:		#transparent;
+}
+.nice-menu li li {
+	background:		#2d2d2d;
+}
+.nice-menu li li li {
+	background:		#1a1a1a;
+}
+.nice-menu li:hover, .nice-menu li.sfHover,
+.nice-menu a:focus, .nice-menu a:hover, .nice-menu a:active {
+	background:		#000 url(../../image/theme/menu-hover.png) repeat-x;
+	outline:		0;
+}
+
+/*** arrows **/
+.nice-menu a.nice-with-ul {
+	padding-right: 	1.75em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+.nice-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999em;
+	overflow:		hidden;
+	background:		url('../../image/theme/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}
+a > .nice-sub-indicator {  /* give all except IE6 the correct values */
+	top:			1.2em;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .nice-sub-indicator,
+a:hover > .nice-sub-indicator,
+a:active > .nice-sub-indicator,
+li:hover > a > .nice-sub-indicator,
+li.sfHover > a > .nice-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+
+/* point right for anchors in subs */
+.nice-menu ul .nice-sub-indicator { background-position:  -10px 0; }
+.nice-menu ul a > .nice-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+.nice-menu ul a:focus > .nice-sub-indicator,
+.nice-menu ul a:hover > .nice-sub-indicator,
+.nice-menu ul a:active > .nice-sub-indicator,
+.nice-menu ul li:hover > a > .nice-sub-indicator,
+.nice-menu ul li.sfHover > a > .nice-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/*** shadows for all but IE6 ***/
+.nice-shadow ul {
+	background:	url('../../image/theme/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.nice-shadow ul.nice-shadow-off {
+	background: transparent;
+}
+
+ul.nice-menu a {
+    display: block;
+    color: #A35D91;
+}
+.block-nice-menus {
+    line-height: normal;
+    z-index: 10;
+    margin-bottom: 0 !important;
+}
